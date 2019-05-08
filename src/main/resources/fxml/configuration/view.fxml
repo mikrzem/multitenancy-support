@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="pl.net.gwynder.multitenency.support.configuration.controllers.ServerConfigurationViewController"
+          maxWidth="100000" vgap="5" hgap="5">
+    <columnConstraints>
+        <ColumnConstraints percentWidth="30"/>
+        <ColumnConstraints percentWidth="40"/>
+        <ColumnConstraints percentWidth="30"/>
+    </columnConstraints>
+    <Label fx:id="name"
+           styleClass="title"
+           GridPane.columnIndex="0"
+           GridPane.columnSpan="2"
+           GridPane.rowIndex="0"/>
+    <Label fx:id="type"
+           styleClass="title"
+           GridPane.columnIndex="2"
+           GridPane.rowIndex="0"/>
+    <Label styleClass="description"
+           GridPane.columnIndex="0"
+           GridPane.rowIndex="1">
+        URL:
+    </Label>
+    <Label fx:id="url"
+           GridPane.columnIndex="1"
+           GridPane.columnSpan="2"
+           GridPane.rowIndex="1"/>
+    <Button fx:id="edit"
+            styleClass="actions"
+            maxWidth="10000000"
+            GridPane.columnIndex="0"
+            GridPane.columnSpan="2"
+            GridPane.rowIndex="2">
+        Edit
+    </Button>
+    <Button fx:id="remove"
+            styleClass="actions"
+            maxWidth="10000000"
+            GridPane.columnIndex="2"
+            GridPane.rowIndex="2">
+        Remove
+    </Button>
+</GridPane>

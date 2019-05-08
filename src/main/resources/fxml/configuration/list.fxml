@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="pl.net.gwynder.multitenency.support.configuration.controllers.ServerConfigurationListController"
+      styleClass="padded">
+    <VBox fx:id="listContainer"/>
+    <Button fx:id="addConfiguration" styleClass="actions" maxWidth="10000000">
+        Add new configuration
+    </Button>
+</VBox>

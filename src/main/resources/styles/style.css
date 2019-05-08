@@ -1,0 +1,20 @@
+* {
+   -fx-base: rgba(60, 63, 65, 255);
+}
+
+.actions, .actions * {
+   -fx-font-size: 18;
+}
+
+.padded {
+   -fx-padding: 16px;
+}
+
+.title {
+   -fx-font-size: 20;
+   -fx-font-weight: bold;
+}
+
+.description {
+   -fx-font-weight: bold;
+}

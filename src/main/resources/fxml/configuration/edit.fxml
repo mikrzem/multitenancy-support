@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="pl.net.gwynder.multitenency.support.configuration.controllers.ServerConfigurationEditController"
+          styleClass="padded"
+          vgap="5" hgap="5">
+    <columnConstraints>
+        <ColumnConstraints percentWidth="30"/>
+        <ColumnConstraints percentWidth="40"/>
+        <ColumnConstraints percentWidth="30"/>
+    </columnConstraints>
+    <Label styleClass="title"
+           GridPane.columnIndex="0"
+           GridPane.columnSpan="3"
+           GridPane.rowIndex="0">
+        Editing configuration
+    </Label>
+    <Label styleClass="description"
+           GridPane.columnIndex="0"
+           GridPane.rowIndex="1">
+        Name
+    </Label>
+    <TextField fx:id="name"
+               GridPane.columnIndex="1"
+               GridPane.columnSpan="2"
+               GridPane.rowIndex="1"
+               maxWidth="1000000"
+               promptText="Name"/>
+    <Label styleClass="description"
+           GridPane.columnIndex="0"
+           GridPane.rowIndex="2">
+        Type
+    </Label>
+    <ComboBox fx:id="type"
+              GridPane.columnIndex="1"
+              GridPane.columnSpan="2"
+              GridPane.rowIndex="2"
+              maxWidth="1000000"
+              promptText="Type"/>
+    <Label styleClass="description"
+           GridPane.columnIndex="0"
+           GridPane.rowIndex="3">
+        URL
+    </Label>
+    <TextField fx:id="url"
+               GridPane.columnIndex="1"
+               GridPane.columnSpan="2"
+               GridPane.rowIndex="3"
+               maxWidth="1000000"
+               promptText="URL"/>
+    <Label styleClass="description"
+           GridPane.columnIndex="0"
+           GridPane.rowIndex="4">
+        User
+    </Label>
+    <TextField fx:id="username"
+               GridPane.columnIndex="1"
+               GridPane.columnSpan="2"
+               GridPane.rowIndex="4"
+               maxWidth="1000000"
+               promptText="User"/>
+    <Label styleClass="description"
+           GridPane.columnIndex="0"
+           GridPane.rowIndex="5">
+        Password
+    </Label>
+    <PasswordField fx:id="password"
+                   GridPane.columnIndex="1"
+                   GridPane.columnSpan="2"
+                   GridPane.rowIndex="5"
+                   maxWidth="1000000"
+                   promptText="Password"/>
+    <Button fx:id="save"
+            maxWidth="1000000"
+            GridPane.columnIndex="0"
+            GridPane.columnSpan="2"
+            GridPane.rowIndex="6">
+        Save
+    </Button>
+    <Button fx:id="cancel"
+            maxWidth="1000000"
+            GridPane.columnIndex="2"
+            GridPane.rowIndex="6">
+        Cancel
+    </Button>
+    <Button fx:id="testConnection"
+            maxWidth="1000000"
+            GridPane.columnIndex="0"
+            GridPane.columnSpan="3"
+            GridPane.rowIndex="7">
+        Test connection
+    </Button>
+</GridPane>
