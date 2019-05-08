@@ -18,3 +18,10 @@
 .description {
    -fx-font-weight: bold;
 }
+
+.section-container {
+   -fx-padding: 8px;
+   -fx-border-style: solid;
+   -fx-border-color: white;
+   -fx-border-width: 2px;
+}
