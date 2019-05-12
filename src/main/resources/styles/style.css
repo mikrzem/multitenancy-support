@@ -1,27 +1,28 @@
 * {
-   -fx-base: rgba(60, 63, 65, 255);
+    -fx-base: rgba(60, 63, 65, 255);
+    -fx-icon-color: white;
 }
 
 .actions, .actions * {
-   -fx-font-size: 18;
+    -fx-font-size: 18;
 }
 
 .padded {
-   -fx-padding: 16px;
+    -fx-padding: 16px;
 }
 
 .title {
-   -fx-font-size: 20;
-   -fx-font-weight: bold;
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
 }
 
 .description {
-   -fx-font-weight: bold;
+    -fx-font-weight: bold;
 }
 
 .section-container {
-   -fx-padding: 8px;
-   -fx-border-style: solid;
-   -fx-border-color: white;
-   -fx-border-width: 2px;
+    -fx-padding: 8px;
+    -fx-border-style: solid;
+    -fx-border-color: white;
+    -fx-border-width: 2px;
 }

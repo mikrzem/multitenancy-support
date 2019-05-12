@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 <GridPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
           fx:controller="pl.net.gwynder.multitenency.support.configuration.controllers.ServerConfigurationEditController"
@@ -82,6 +79,9 @@
             GridPane.columnIndex="0"
             GridPane.columnSpan="2"
             GridPane.rowIndex="6">
+        <graphic>
+            <FontIcon iconLiteral="fa-save"/>
+        </graphic>
         Save
     </Button>
     <Button fx:id="cancel"
@@ -95,6 +95,16 @@
             GridPane.columnIndex="0"
             GridPane.columnSpan="3"
             GridPane.rowIndex="7">
+        <graphic>
+            <FontIcon iconLiteral="fa-check"/>
+        </graphic>
         Test connection
+    </Button>
+    <Button fx:id="editGroups"
+            maxWidth="1000000"
+            GridPane.columnIndex="0"
+            GridPane.columnSpan="3"
+            GridPane.rowIndex="8">
+        Edit database groups
     </Button>
 </GridPane>

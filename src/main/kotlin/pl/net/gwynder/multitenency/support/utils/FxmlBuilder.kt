@@ -4,7 +4,6 @@ import javafx.fxml.FXMLLoader
 import javafx.scene.Parent
 import javafx.scene.Scene
 import javafx.util.Callback
-import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.ApplicationContext
 import org.springframework.core.io.Resource
 import org.springframework.stereotype.Service
@@ -23,6 +22,10 @@ class FxmlBuilder(
 
     fun component(resource: Resource, controllerFactory: Callback<Class<*>, Any>? = null): Parent {
         return loader(resource, controllerFactory).load()
+    }
+
+    fun componentWithController(resource: Resource, controller: Any): Parent {
+        return component(resource, Callback { controller })
     }
 
     fun scene(resource: Resource): Scene {

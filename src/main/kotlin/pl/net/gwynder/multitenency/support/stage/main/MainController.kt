@@ -5,12 +5,10 @@ import javafx.fxml.FXML
 import javafx.scene.Parent
 import javafx.scene.control.MenuItem
 import javafx.scene.layout.VBox
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.core.io.Resource
 import org.springframework.stereotype.Component
-import pl.net.gwynder.multitenency.support.configuration.entities.DatabaseServerConfiguration
+import pl.net.gwynder.multitenency.support.configuration.entities.ServerConfiguration
 import pl.net.gwynder.multitenency.support.configuration.services.ServerConfigurationEditContainer
 import pl.net.gwynder.multitenency.support.utils.FxmlBuilder
 import pl.net.gwynder.multitenency.support.utils.base.BaseController
@@ -22,6 +20,8 @@ class MainController(
         private val configurationList: Resource,
         @Value("classpath:fxml/configuration/edit.fxml")
         private val configurationEdit: Resource,
+        @Value("classpath:fxml/configuration/group_tree_edit.fxml")
+        private val groupTreeEdit: Resource,
         private val configurationContainer: ServerConfigurationEditContainer
 ) : BaseController(), MainNavigation {
 
@@ -57,8 +57,13 @@ class MainController(
         show(fxml.component(configurationEdit))
     }
 
-    override fun showEditConfiguration(configuration: DatabaseServerConfiguration) {
+    override fun showEditConfiguration(configuration: ServerConfiguration) {
         configurationContainer.current = configuration
         show(fxml.component(configurationEdit))
+    }
+
+    override fun showGroupEditTree(configuration: ServerConfiguration) {
+        configurationContainer.current = configuration
+        show(fxml.component(groupTreeEdit))
     }
 }

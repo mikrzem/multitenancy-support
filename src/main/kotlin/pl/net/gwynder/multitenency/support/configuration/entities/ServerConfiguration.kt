@@ -7,7 +7,7 @@ import javax.persistence.EnumType
 import javax.persistence.Enumerated
 
 @Entity
-class DatabaseServerConfiguration(
+class ServerConfiguration(
         @Column(nullable = false)
         var name: String = "",
         @Column(nullable = false)

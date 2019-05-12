@@ -5,15 +5,15 @@ import javafx.fxml.FXML
 import javafx.scene.control.Alert
 import javafx.scene.control.Button
 import javafx.scene.control.Label
-import pl.net.gwynder.multitenency.support.configuration.entities.DatabaseServerConfiguration
-import pl.net.gwynder.multitenency.support.configuration.services.DatabaseServerConfigurationService
+import pl.net.gwynder.multitenency.support.configuration.entities.ServerConfiguration
+import pl.net.gwynder.multitenency.support.configuration.services.ServerConfigurationService
 import pl.net.gwynder.multitenency.support.stage.main.MainNavigation
 import pl.net.gwynder.multitenency.support.utils.base.BaseComponent
 import javafx.scene.control.ButtonType
 
 class ServerConfigurationViewController(
-        private var configuration: DatabaseServerConfiguration,
-        private val service: DatabaseServerConfigurationService,
+        private var configuration: ServerConfiguration,
+        private val service: ServerConfigurationService,
         private val navigation: MainNavigation,
         private val onDelete: () -> Unit
 ) : BaseComponent() {

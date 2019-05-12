@@ -1,26 +1,26 @@
 package pl.net.gwynder.multitenency.support.configuration.services
 
 import org.springframework.stereotype.Service
-import pl.net.gwynder.multitenency.support.configuration.entities.DatabaseServerConfiguration
+import pl.net.gwynder.multitenency.support.configuration.entities.ServerConfiguration
 import pl.net.gwynder.multitenency.support.utils.base.BaseComponent
 
 @Service
-class DatabaseServerConfigurationService(
-        private val repository: DatabaseServerConfigurationRepository,
+class ServerConfigurationService(
+        private val repository: ServerConfigurationRepository,
         private val dataSourceProvider: DataSourceProvider
 ) : BaseComponent() {
 
-    fun select(): List<DatabaseServerConfiguration> {
+    fun select(): List<ServerConfiguration> {
         return repository.findAll()
     }
 
-    fun save(configuration: DatabaseServerConfiguration): DatabaseServerConfiguration {
+    fun save(configuration: ServerConfiguration): ServerConfiguration {
         val saved = repository.save(configuration)
         dataSourceProvider.clear(saved)
         return saved
     }
 
-    fun delete(configuration: DatabaseServerConfiguration) {
+    fun delete(configuration: ServerConfiguration) {
         repository.delete(configuration)
         dataSourceProvider.clear(configuration)
     }

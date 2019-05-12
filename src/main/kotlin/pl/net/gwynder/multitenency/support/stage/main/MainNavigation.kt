@@ -1,6 +1,6 @@
 package pl.net.gwynder.multitenency.support.stage.main
 
-import pl.net.gwynder.multitenency.support.configuration.entities.DatabaseServerConfiguration
+import pl.net.gwynder.multitenency.support.configuration.entities.ServerConfiguration
 
 interface MainNavigation {
 
@@ -8,6 +8,8 @@ interface MainNavigation {
 
     fun showNewConfiguration()
 
-    fun showEditConfiguration(configuration: DatabaseServerConfiguration)
+    fun showEditConfiguration(configuration: ServerConfiguration)
+
+    fun showGroupEditTree(configuration: ServerConfiguration)
 
 }

@@ -5,7 +5,7 @@ import io.reactivex.Single
 import org.springframework.boot.jdbc.DataSourceBuilder
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Service
-import pl.net.gwynder.multitenency.support.configuration.entities.DatabaseServerConfiguration
+import pl.net.gwynder.multitenency.support.configuration.entities.ServerConfiguration
 import pl.net.gwynder.multitenency.support.configuration.entities.ServerType
 import pl.net.gwynder.multitenency.support.utils.base.BaseComponent
 import javax.sql.DataSource
@@ -58,7 +58,7 @@ class DataSourceProvider : BaseComponent() {
 
     private val cache: MutableMap<Long, DataSource> = HashMap()
 
-    fun dataSource(configuration: DatabaseServerConfiguration): DataSource {
+    fun dataSource(configuration: ServerConfiguration): DataSource {
         val found = cache[configuration.id]
         return if (found == null) {
             val created = dataSource(
@@ -74,7 +74,7 @@ class DataSourceProvider : BaseComponent() {
         }
     }
 
-    fun clear(configuration: DatabaseServerConfiguration) {
+    fun clear(configuration: ServerConfiguration) {
         if (configuration.id != null) {
             cache.remove(configuration.id ?: 0)
         }

@@ -1,6 +1,5 @@
 package pl.net.gwynder.multitenency.support.configuration.controllers
 
-import com.zaxxer.hikari.hibernate.HikariConfigurationUtil.loadConfiguration
 import javafx.event.EventHandler
 import javafx.fxml.FXML
 import javafx.scene.control.*
@@ -8,15 +7,14 @@ import javafx.util.StringConverter
 import org.springframework.stereotype.Component
 import pl.net.gwynder.multitenency.support.configuration.entities.ServerType
 import pl.net.gwynder.multitenency.support.configuration.services.DataSourceProvider
-import pl.net.gwynder.multitenency.support.configuration.services.DatabaseServerConfigurationService
 import pl.net.gwynder.multitenency.support.configuration.services.ServerConfigurationEditContainer
+import pl.net.gwynder.multitenency.support.configuration.services.ServerConfigurationService
 import pl.net.gwynder.multitenency.support.stage.main.MainNavigation
 import pl.net.gwynder.multitenency.support.utils.base.BaseController
-import java.lang.RuntimeException
 
 @Component
 class ServerConfigurationEditController(
-        private val service: DatabaseServerConfigurationService,
+        private val service: ServerConfigurationService,
         private val navigation: MainNavigation,
         private val configuration: ServerConfigurationEditContainer,
         private val dataSourceProvider: DataSourceProvider
@@ -45,6 +43,9 @@ class ServerConfigurationEditController(
 
     @FXML
     var testConnection: Button? = null
+
+    @FXML
+    var editGroups: Button? = null
 
     @FXML
     fun initialize() {
@@ -84,6 +85,9 @@ class ServerConfigurationEditController(
                 }
             }
         }
+        editGroups?.onAction = EventHandler {
+            navigation.showGroupEditTree(configuration.current)
+        }
         loadConfiguration()
     }
 
@@ -93,6 +97,7 @@ class ServerConfigurationEditController(
         url?.text = configuration.current.serverUrl
         username?.text = configuration.current.serverUsername
         password?.text = configuration.current.serverPassword
+        editGroups?.isVisible = configuration.current.id != null
     }
 
 }
