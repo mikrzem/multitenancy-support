@@ -16,10 +16,16 @@
     </stylesheets>
     <MenuBar styleClass="actions">
         <Menu text="Configuration">
-            <MenuItem text="View all" fx:id="viewAllConfigurations"/>
-            <MenuItem text="Add new" fx:id="addNewConfigurations"/>
+            <MenuItem text="View all"
+                      fx:id="viewAllConfigurations"/>
+            <MenuItem text="Add new"
+                      fx:id="addNewConfigurations"/>
+        </Menu>
+        <Menu text="Scripts">
+            <MenuItem text="Execute new script"
+                      fx:id="newScriptExecution"/>
         </Menu>
     </MenuBar>
-    <VBox fx:id="contentContainer" VBox.vgrow="ALWAYS">
-    </VBox>
+    <VBox fx:id="contentContainer"
+          VBox.vgrow="ALWAYS"/>
 </VBox>

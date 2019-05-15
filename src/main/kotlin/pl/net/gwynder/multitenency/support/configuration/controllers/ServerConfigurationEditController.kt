@@ -9,6 +9,7 @@ import pl.net.gwynder.multitenency.support.configuration.entities.ServerType
 import pl.net.gwynder.multitenency.support.configuration.services.DataSourceProvider
 import pl.net.gwynder.multitenency.support.configuration.services.ServerConfigurationEditContainer
 import pl.net.gwynder.multitenency.support.configuration.services.ServerConfigurationService
+import pl.net.gwynder.multitenency.support.configuration.services.ServerTypeStringConverter
 import pl.net.gwynder.multitenency.support.stage.main.MainNavigation
 import pl.net.gwynder.multitenency.support.utils.base.BaseController
 
@@ -52,7 +53,7 @@ class ServerConfigurationEditController(
         type?.converter = ServerTypeStringConverter()
         type?.items?.clear()
         type?.items?.addAll(ServerType.values())
-        cancel?.onAction = EventHandler { navigation.showAllConfigurations() }
+        cancel?.onAction = EventHandler { navigation.goBack() }
         save?.onAction = EventHandler {
             if (name?.text ?: "" == ""
                     || url?.text ?: "" == ""
@@ -98,22 +99,6 @@ class ServerConfigurationEditController(
         username?.text = configuration.current.serverUsername
         password?.text = configuration.current.serverPassword
         editGroups?.isVisible = configuration.current.id != null
-    }
-
-}
-
-private class ServerTypeStringConverter : StringConverter<ServerType>() {
-    override fun toString(value: ServerType?): String {
-        return value?.display ?: ""
-    }
-
-    override fun fromString(string: String?): ServerType {
-        if (string == null || string == "") {
-            throw RuntimeException("Missing server type")
-        } else {
-            return ServerType.values().find { type -> type.display == string }
-                    ?: throw RuntimeException("Unknown server type: $string")
-        }
     }
 
 }

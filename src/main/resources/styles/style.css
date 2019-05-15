@@ -1,28 +1,35 @@
 * {
-    -fx-base: rgba(60, 63, 65, 255);
-    -fx-icon-color: white;
+   -fx-base: rgba(60, 63, 65, 255);
+   -fx-icon-color: white;
+   -fx-font-size: 14;
 }
 
 .actions, .actions * {
-    -fx-font-size: 18;
+   -fx-font-size: 18;
 }
 
 .padded {
-    -fx-padding: 16px;
+   -fx-padding: 16px;
 }
 
 .title {
-    -fx-font-size: 20;
-    -fx-font-weight: bold;
+   -fx-font-size: 20;
+   -fx-font-weight: bold;
 }
 
 .description {
-    -fx-font-weight: bold;
+   -fx-font-weight: bold;
 }
 
 .section-container {
-    -fx-padding: 8px;
-    -fx-border-style: solid;
-    -fx-border-color: white;
-    -fx-border-width: 2px;
+   -fx-padding: 8px;
+   -fx-border-style: solid;
+   -fx-border-color: white;
+   -fx-border-width: 2px;
+}
+
+.debug {
+   -fx-border-color: red;
+   -fx-border-style: solid;
+   -fx-border-width: 2px;
 }

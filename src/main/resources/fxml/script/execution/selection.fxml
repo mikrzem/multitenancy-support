@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="pl.net.gwynder.multitenency.support.script.execution.controllers.ScriptTargetSelectionController">
+    <HBox>
+        <Label>
+            Server type:
+        </Label>
+        <ComboBox HBox.hgrow="ALWAYS"
+                  maxWidth="10000"
+                  fx:id="serverType"/>
+    </HBox>
+    <TreeView VBox.vgrow="ALWAYS"
+              fx:id="selectionTree"/>
+    <Button fx:id="confirm"
+            maxWidth="100000"
+            styleClass="actions">
+        Confirm selection
+    </Button>
+</VBox>

@@ -27,17 +27,6 @@ class DataSourceProvider : BaseComponent() {
                 .build()
     }
 
-    private fun jdbcTemplate(
-            type: ServerType,
-            url: String,
-            username: String,
-            password: String
-    ): JdbcTemplate {
-        return JdbcTemplate(
-                dataSource(type, url, username, password)
-        )
-    }
-
     fun testConnection(
             type: ServerType,
             url: String,
@@ -46,8 +35,11 @@ class DataSourceProvider : BaseComponent() {
     ): Single<Boolean> {
         return Single.create<Boolean> { emitter ->
             try {
-                val jdbcTemplate = jdbcTemplate(type, url, username, password)
-                jdbcTemplate.queryForObject("SELECT 1", Int::class.java)
+                val dataSource = dataSource(type, url, username, password)
+                dataSource.connection.use { connection ->
+                    val statement = connection.createStatement()
+                    statement.executeQuery("SELECT 1")
+                }
                 emitter.onSuccess(true)
             } catch (ex: Exception) {
                 logger.error("Error connecting to database")
@@ -56,10 +48,14 @@ class DataSourceProvider : BaseComponent() {
         }.subscribeOnFx()
     }
 
+    private fun configurationId(configuration: ServerConfiguration) =
+            configuration.id ?: 0
+
     private val cache: MutableMap<Long, DataSource> = HashMap()
 
     fun dataSource(configuration: ServerConfiguration): DataSource {
-        val found = cache[configuration.id]
+        val configurationId = configurationId(configuration)
+        val found = cache[configurationId]
         return if (found == null) {
             val created = dataSource(
                     configuration.serverType,
@@ -67,7 +63,21 @@ class DataSourceProvider : BaseComponent() {
                     configuration.serverUsername,
                     configuration.serverPassword
             )
-            cache[configuration.id ?: 0] = created
+            cache[configurationId] = created
+            created
+        } else {
+            found
+        }
+    }
+
+    private val containerCache: MutableMap<Long, DataSourceContainer> = HashMap()
+
+    fun container(configuration: ServerConfiguration): DataSourceContainer {
+        val configurationId = configurationId(configuration)
+        val found = containerCache[configurationId]
+        return if (found == null) {
+            val created = DataSourceContainer(dataSource(configuration))
+            containerCache[configurationId] = created
             created
         } else {
             found
@@ -76,7 +86,9 @@ class DataSourceProvider : BaseComponent() {
 
     fun clear(configuration: ServerConfiguration) {
         if (configuration.id != null) {
-            cache.remove(configuration.id ?: 0)
+            val configurationId = configurationId(configuration)
+            cache.remove(configurationId)
+            containerCache.remove(configurationId)
         }
     }
 

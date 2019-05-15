@@ -78,7 +78,8 @@
             maxWidth="1000000"
             GridPane.columnIndex="0"
             GridPane.columnSpan="2"
-            GridPane.rowIndex="6">
+            GridPane.rowIndex="6"
+            styleClass="actions">
         <graphic>
             <FontIcon iconLiteral="fa-save"/>
         </graphic>
@@ -87,14 +88,16 @@
     <Button fx:id="cancel"
             maxWidth="1000000"
             GridPane.columnIndex="2"
-            GridPane.rowIndex="6">
+            GridPane.rowIndex="6"
+            styleClass="actions">
         Cancel
     </Button>
     <Button fx:id="testConnection"
             maxWidth="1000000"
             GridPane.columnIndex="0"
             GridPane.columnSpan="3"
-            GridPane.rowIndex="7">
+            GridPane.rowIndex="7"
+            styleClass="actions">
         <graphic>
             <FontIcon iconLiteral="fa-check"/>
         </graphic>
@@ -104,7 +107,8 @@
             maxWidth="1000000"
             GridPane.columnIndex="0"
             GridPane.columnSpan="3"
-            GridPane.rowIndex="8">
+            GridPane.rowIndex="8"
+            styleClass="actions">
         Edit database groups
     </Button>
 </GridPane>

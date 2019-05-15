@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="pl.net.gwynder.multitenency.support.configuration.controllers.ServerConfigurationGroupEditController"
+          styleClass="padded"
+          vgap="5" hgap="5">
+    <columnConstraints>
+        <ColumnConstraints percentWidth="30"/>
+        <ColumnConstraints percentWidth="40"/>
+        <ColumnConstraints percentWidth="30"/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints/>
+        <RowConstraints/>
+        <RowConstraints/>
+        <RowConstraints vgrow="ALWAYS"/>
+        <RowConstraints/>
+    </rowConstraints>
+    <Label GridPane.columnIndex="0"
+           GridPane.rowIndex="0">
+        Server:
+    </Label>
+    <Label fx:id="serverName"
+           GridPane.columnIndex="1"
+           GridPane.columnSpan="2"
+           GridPane.rowIndex="0"/>
+    <Label GridPane.columnIndex="0"
+           GridPane.rowIndex="1">
+        Parent:
+    </Label>
+    <Label fx:id="parentName"
+           GridPane.columnIndex="1"
+           GridPane.columnSpan="2"
+           GridPane.rowIndex="1"/>
+    <Label GridPane.columnIndex="0"
+           GridPane.rowIndex="2">
+        Name:
+    </Label>
+    <TextField fx:id="name"
+               GridPane.columnIndex="1"
+               GridPane.columnSpan="2"
+               GridPane.rowIndex="2"/>
+    <GridPane GridPane.columnIndex="0"
+              GridPane.columnSpan="3"
+              GridPane.rowIndex="3">
+        <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS"/>
+            <ColumnConstraints/>
+            <ColumnConstraints hgrow="ALWAYS"/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints/>
+            <RowConstraints vgrow="ALWAYS"/>
+        </rowConstraints>
+        <Label GridPane.rowIndex="0"
+               GridPane.columnIndex="0">
+            All databases
+        </Label>
+        <Label GridPane.rowIndex="0"
+               GridPane.columnIndex="2">
+            Databases in group
+        </Label>
+        <ListView fx:id="allDatabases"
+                  GridPane.rowIndex="1"
+                  GridPane.columnIndex="0">
+        </ListView>
+        <VBox alignment="CENTER"
+              GridPane.rowIndex="1"
+              GridPane.columnIndex="1">
+            <Button fx:id="addAllDatabases"
+                    maxWidth="100000"
+                    styleClass="actions">
+                <graphic>
+                    <FontIcon iconLiteral="fa-angle-double-right"/>
+                </graphic>
+                Add all
+            </Button>
+            <Button fx:id="addSelectedDatabases"
+                    maxWidth="100000"
+                    styleClass="actions">
+                <graphic>
+                    <FontIcon iconLiteral="fa-angle-right"/>
+                </graphic>
+                Add selected
+            </Button>
+            <Button fx:id="removeSelectedDatabases"
+                    maxWidth="100000"
+                    styleClass="actions">
+                <graphic>
+                    <FontIcon iconLiteral="fa-angle-left"/>
+                </graphic>
+                Remove selected
+            </Button>
+            <Button fx:id="removeAllDatabases"
+                    maxWidth="100000"
+                    styleClass="actions">
+                <graphic>
+                    <FontIcon iconLiteral="fa-angle-double-left"/>
+                </graphic>
+                Remove all
+            </Button>
+        </VBox>
+        <ListView fx:id="groupDatabases"
+                  GridPane.rowIndex="1"
+                  GridPane.columnIndex="2">
+        </ListView>
+    </GridPane>
+    <Button GridPane.columnIndex="0"
+            GridPane.columnSpan="2"
+            GridPane.rowIndex="4"
+            fx:id="save"
+            styleClass="actions"
+            maxWidth="100000">
+        <graphic>
+            <FontIcon iconLiteral="fa-save"/>
+        </graphic>
+        Save group
+    </Button>
+    <Button GridPane.columnIndex="2"
+            GridPane.rowIndex="4"
+            fx:id="cancel"
+            styleClass="actions"
+            maxWidth="100000">
+        Cancel
+    </Button>
+</GridPane>

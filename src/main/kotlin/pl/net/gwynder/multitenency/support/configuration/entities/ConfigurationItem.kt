@@ -2,6 +2,7 @@ package pl.net.gwynder.multitenency.support.configuration.entities
 
 enum class ConfigurationItemType {
 
+    ROOT,
     SERVER,
     GROUP,
     DATABASE
@@ -20,6 +21,22 @@ abstract class ConfigurationItem(
 
     abstract fun display(): String
 
+    override fun toString(): String {
+        return display()
+    }
+
+}
+
+class RootConfigurationItem : ConfigurationItem(ServerConfiguration(), ConfigurationItemType.ROOT) {
+
+    override fun allDatabases(): List<String> {
+        return ArrayList()
+    }
+
+    override fun display(): String {
+        return "[root]"
+    }
+
 }
 
 class ServerConfigurationItem(
@@ -36,6 +53,20 @@ class ServerConfigurationItem(
         return server.name
     }
 
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as GroupConfigurationItem
+
+        if (server != other.server) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        return server.hashCode()
+    }
 }
 
 class GroupConfigurationItem(
@@ -54,6 +85,21 @@ class GroupConfigurationItem(
         return group.name
     }
 
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as GroupConfigurationItem
+
+        if (group != other.group) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        return group.hashCode()
+    }
+
 }
 
 class DatabaseConfigurationItem(
@@ -69,5 +115,22 @@ class DatabaseConfigurationItem(
     override fun display(): String {
         return database
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as DatabaseConfigurationItem
+
+        if (server != other.server) return false
+        if (database != other.database) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        return server.hashCode() + database.hashCode()
+    }
+
 
 }
