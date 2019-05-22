@@ -101,8 +101,7 @@ class ServerConfigurationGroupEditController(
         group.databases.clear()
         group.databases.addAll(groupDatabases?.items ?: listOf())
         configuration.currentGroup = service.save(group)
-        loadFields()
-        Alert(Alert.AlertType.INFORMATION, "Group saved", ButtonType.OK).show()
+        navigation.goBack()
     }
 
     private fun loadFields() {

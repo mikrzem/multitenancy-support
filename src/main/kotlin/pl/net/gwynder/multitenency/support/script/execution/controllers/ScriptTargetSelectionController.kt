@@ -64,8 +64,8 @@ class ScriptTargetSelectionController(
         findChecked(rootCheckbox, foundChecked)
         context.selectedDatabases.clear()
         context.selectedDatabases.addAll(foundChecked)
-        if (context.executeOnDatabases().isEmpty()) {
-            Alert(Alert.AlertType.WARNING, "At least one database must be selected")
+        if (context.targetDatabases.isEmpty()) {
+            Alert(Alert.AlertType.WARNING, "At least one database must be selected").show()
             return
         }
         navigation.showQuery()

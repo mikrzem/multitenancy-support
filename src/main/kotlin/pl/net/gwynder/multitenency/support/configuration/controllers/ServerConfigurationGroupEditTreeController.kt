@@ -39,7 +39,7 @@ class ServerConfigurationGroupEditTreeController(
         editTree?.isShowRoot = false
         editTree?.root = createTreeItem(server)
         editTree?.cellFactory = Callback<TreeView<ConfigurationItem>, TreeCell<ConfigurationItem>> {
-            ConfigurationItemTreeCell(navigation, configuration)
+            ConfigurationItemTreeCell(navigation, configuration, service)
         }
         newRootGroup?.onAction = EventHandler {
             navigation.showGroupEdit(configuration.current, ServerConfigurationGroup(configuration.current))
@@ -62,7 +62,8 @@ class ServerConfigurationGroupEditTreeController(
 
 class ConfigurationItemTreeCell(
         private val navigation: MainNavigation,
-        private val configuration: ServerConfigurationEditContainer
+        private val configuration: ServerConfigurationEditContainer,
+        private val service: ServerConfigurationGroupService
 ) : TreeCell<ConfigurationItem>() {
 
     override fun updateItem(item: ConfigurationItem?, empty: Boolean) {
@@ -124,7 +125,15 @@ class ConfigurationItemTreeCell(
         val menu = MenuItem("Remove group")
         menu.graphic = FontIcon.of(FontAwesome.TRASH)
         menu.onAction = EventHandler {
-            // TODO
+            Alert(Alert.AlertType.CONFIRMATION, "Do you want to remove group: $text?", ButtonType.YES, ButtonType.NO).showAndWait()
+                    .filter { button -> button == ButtonType.YES }
+                    .ifPresent {
+                        val current = item
+                        if(current is GroupConfigurationItem) {
+                            service.remove(current.group)
+                            navigation.showGroupEditTree(configuration.current)
+                        }
+                    }
         }
         return menu
     }

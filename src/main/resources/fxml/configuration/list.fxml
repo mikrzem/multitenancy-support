@@ -9,8 +9,7 @@
       styleClass="padded">
     <VBox fx:id="listContainer"/>
     <Button fx:id="addConfiguration"
-            styleClass="actions"
-            maxWidth="10000000">
+            styleClass="actions">
         <graphic>
             <FontIcon iconLiteral="fa-plus-square"/>
         </graphic>

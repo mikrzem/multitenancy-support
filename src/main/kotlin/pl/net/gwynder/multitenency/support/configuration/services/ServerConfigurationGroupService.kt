@@ -62,4 +62,9 @@ class ServerConfigurationGroupService(
         return repository.save(group)
     }
 
+    fun remove(group: ServerConfigurationGroup) {
+        repository.findByParent(group).forEach { child -> remove(child) }
+        repository.delete(group)
+    }
+
 }

@@ -17,7 +17,13 @@ class ScriptExecutingController(
         private val context: ScriptExecutionContext,
         private val fxml: FxmlBuilder,
         @Value("classpath:fxml/script/execution/selection.fxml")
-        private val selection: Resource
+        private val selection: Resource,
+        @Value("classpath:fxml/script/execution/query.fxml")
+        private val query: Resource,
+        @Value("classpath:fxml/script/execution/summary.fxml")
+        private val summary: Resource,
+        @Value("classpath:fxml/script/execution/progress.fxml")
+        private val progress: Resource
 ) : BaseController(), ScriptExecutionNavigation {
 
     @FXML
@@ -40,11 +46,15 @@ class ScriptExecutingController(
     }
 
     override fun showQuery() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        show(fxml.component(query))
+    }
+
+    override fun showSummary() {
+        show(fxml.component(summary))
     }
 
     override fun showInProgress() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        show(fxml.component(progress))
     }
 
     override fun showResults() {

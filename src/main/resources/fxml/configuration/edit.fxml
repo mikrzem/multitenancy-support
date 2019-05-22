@@ -28,7 +28,6 @@
                GridPane.columnIndex="1"
                GridPane.columnSpan="2"
                GridPane.rowIndex="1"
-               maxWidth="1000000"
                promptText="Name"/>
     <Label styleClass="description"
            GridPane.columnIndex="0"
@@ -39,7 +38,6 @@
               GridPane.columnIndex="1"
               GridPane.columnSpan="2"
               GridPane.rowIndex="2"
-              maxWidth="1000000"
               promptText="Type"/>
     <Label styleClass="description"
            GridPane.columnIndex="0"
@@ -50,7 +48,6 @@
                GridPane.columnIndex="1"
                GridPane.columnSpan="2"
                GridPane.rowIndex="3"
-               maxWidth="1000000"
                promptText="URL"/>
     <Label styleClass="description"
            GridPane.columnIndex="0"
@@ -61,7 +58,6 @@
                GridPane.columnIndex="1"
                GridPane.columnSpan="2"
                GridPane.rowIndex="4"
-               maxWidth="1000000"
                promptText="User"/>
     <Label styleClass="description"
            GridPane.columnIndex="0"
@@ -72,10 +68,8 @@
                    GridPane.columnIndex="1"
                    GridPane.columnSpan="2"
                    GridPane.rowIndex="5"
-                   maxWidth="1000000"
                    promptText="Password"/>
     <Button fx:id="save"
-            maxWidth="1000000"
             GridPane.columnIndex="0"
             GridPane.columnSpan="2"
             GridPane.rowIndex="6"
@@ -86,14 +80,12 @@
         Save
     </Button>
     <Button fx:id="cancel"
-            maxWidth="1000000"
             GridPane.columnIndex="2"
             GridPane.rowIndex="6"
             styleClass="actions">
         Cancel
     </Button>
     <Button fx:id="testConnection"
-            maxWidth="1000000"
             GridPane.columnIndex="0"
             GridPane.columnSpan="3"
             GridPane.rowIndex="7"
@@ -104,7 +96,6 @@
         Test connection
     </Button>
     <Button fx:id="editGroups"
-            maxWidth="1000000"
             GridPane.columnIndex="0"
             GridPane.columnSpan="3"
             GridPane.rowIndex="8"

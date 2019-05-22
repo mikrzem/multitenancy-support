@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="pl.net.gwynder.multitenency.support.script.execution.controllers.ScriptInProgressController"
+          styleClass="padded"
+          vgap="10" hgap="10">
+    <columnConstraints>
+        <ColumnConstraints percentWidth="30"/>
+        <ColumnConstraints percentWidth="70"/>
+    </columnConstraints>
+    <ProgressBar maxWidth="1000000"
+                 GridPane.rowIndex="0"
+                 GridPane.columnIndex="0"
+                 GridPane.columnSpan="2"
+                 fx:id="progressBar"/>
+    <Label GridPane.columnIndex="0"
+           GridPane.rowIndex="1"
+           styleClass="text-right">
+        Total actions
+    </Label>
+    <Label GridPane.columnIndex="1"
+           GridPane.rowIndex="1"
+           fx:id="total"/>
+    <Label GridPane.columnIndex="0"
+           GridPane.rowIndex="2"
+           styleClass="text-right">
+        Successful actions
+    </Label>
+    <Label GridPane.columnIndex="1"
+           GridPane.rowIndex="2"
+           fx:id="success"/>
+    <Label GridPane.columnIndex="0"
+           GridPane.rowIndex="3"
+           styleClass="text-right">
+        Skipped actions
+    </Label>
+    <Label GridPane.columnIndex="1"
+           GridPane.rowIndex="3"
+           fx:id="skipped"/>
+    <Label GridPane.columnIndex="0"
+           GridPane.rowIndex="4"
+           styleClass="text-right">
+        Failed actions
+    </Label>
+    <Label GridPane.columnIndex="1"
+           GridPane.rowIndex="4"
+           fx:id="failed"/>
+</GridPane>

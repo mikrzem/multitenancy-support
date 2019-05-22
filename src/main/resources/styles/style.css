@@ -33,3 +33,12 @@
    -fx-border-style: solid;
    -fx-border-width: 2px;
 }
+
+.button, .text-field, .combo-box, .password-field {
+   -fx-max-width: 1000000px;
+}
+
+.text-right {
+   -fx-text-alignment: right;
+   -fx-max-width: 1000000px;
+}

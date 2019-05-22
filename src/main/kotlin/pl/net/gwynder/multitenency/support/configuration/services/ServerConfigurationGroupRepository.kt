@@ -8,4 +8,6 @@ interface ServerConfigurationGroupRepository : BaseEntityRepository<ServerConfig
 
     fun findByConfiguration(configuration: ServerConfiguration): List<ServerConfigurationGroup>
 
+    fun findByParent(parent: ServerConfigurationGroup): List<ServerConfigurationGroup>
+
 }

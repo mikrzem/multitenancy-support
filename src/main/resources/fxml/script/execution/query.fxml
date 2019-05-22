@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="pl.net.gwynder.multitenency.support.script.execution.controllers.ScriptQueryController"
+      styleClass="padded">
+    <TextArea fx:id="queryText"
+              VBox.vgrow="ALWAYS"
+              maxHeight="10000000"/>
+    <Button fx:id="parseQuery"
+            maxWidth="100000000">
+        <graphic>
+            <FontIcon iconLiteral="fa-angle-double-down"/>
+        </graphic>
+        Parse query
+    </Button>
+    <fx:include source="query_parsed.fxml"
+                VBox.vgrow="ALWAYS"/>
+    <GridPane>
+        <columnConstraints>
+            <ColumnConstraints percentWidth="70"/>
+            <ColumnConstraints percentWidth="30"/>
+        </columnConstraints>
+        <Button fx:id="acceptQuery"
+                maxWidth="100000"
+                GridPane.rowIndex="0"
+                GridPane.columnIndex="0">
+            Show script summary
+        </Button>
+        <Button fx:id="goBack"
+                maxWidth="100000"
+                GridPane.rowIndex="0"
+                GridPane.columnIndex="1">
+            <graphic>
+                <FontIcon iconLiteral="fa-level-up"/>
+            </graphic>
+            Return to selection
+        </Button>
+    </GridPane>
+</VBox>

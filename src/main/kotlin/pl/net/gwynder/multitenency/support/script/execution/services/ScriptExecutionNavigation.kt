@@ -6,6 +6,8 @@ interface ScriptExecutionNavigation {
 
     fun showQuery()
 
+    fun showSummary()
+
     fun showInProgress()
 
     fun showResults()

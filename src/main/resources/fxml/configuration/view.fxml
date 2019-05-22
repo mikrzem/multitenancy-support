@@ -32,7 +32,6 @@
            GridPane.rowIndex="1"/>
     <Button fx:id="edit"
             styleClass="actions"
-            maxWidth="10000000"
             GridPane.columnIndex="0"
             GridPane.columnSpan="2"
             GridPane.rowIndex="2">
@@ -43,7 +42,6 @@
     </Button>
     <Button fx:id="remove"
             styleClass="actions"
-            maxWidth="10000000"
             GridPane.columnIndex="2"
             GridPane.rowIndex="2">
         <graphic>

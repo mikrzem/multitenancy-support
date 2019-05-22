@@ -13,7 +13,6 @@
               VBox.vgrow="ALWAYS"/>
     <HBox>
         <Button fx:id="newRootGroup"
-                maxWidth="100000"
                 styleClass="actions"
                 HBox.hgrow="ALWAYS">
             <graphic>
@@ -22,7 +21,6 @@
             Add new root group
         </Button>
         <Button fx:id="cancel"
-                maxWidth="100000"
                 styleClass="actions">
             Cancel
         </Button>

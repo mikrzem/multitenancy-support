@@ -7,11 +7,14 @@ import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Service
 import pl.net.gwynder.multitenency.support.configuration.entities.ServerConfiguration
 import pl.net.gwynder.multitenency.support.configuration.entities.ServerType
+import pl.net.gwynder.multitenency.support.database.usage.UniversalProxyDataSourceProvider
 import pl.net.gwynder.multitenency.support.utils.base.BaseComponent
 import javax.sql.DataSource
 
 @Service
-class DataSourceProvider : BaseComponent() {
+class DataSourceProvider(
+        private val proxyDataSourceProvider: UniversalProxyDataSourceProvider
+) : BaseComponent() {
 
     private fun dataSource(
             type: ServerType,
@@ -53,7 +56,7 @@ class DataSourceProvider : BaseComponent() {
 
     private val cache: MutableMap<Long, DataSource> = HashMap()
 
-    fun dataSource(configuration: ServerConfiguration): DataSource {
+    private fun dataSource(configuration: ServerConfiguration): DataSource {
         val configurationId = configurationId(configuration)
         val found = cache[configurationId]
         return if (found == null) {
@@ -70,25 +73,26 @@ class DataSourceProvider : BaseComponent() {
         }
     }
 
-    private val containerCache: MutableMap<Long, DataSourceContainer> = HashMap()
-
     fun container(configuration: ServerConfiguration): DataSourceContainer {
-        val configurationId = configurationId(configuration)
-        val found = containerCache[configurationId]
-        return if (found == null) {
-            val created = DataSourceContainer(dataSource(configuration))
-            containerCache[configurationId] = created
-            created
-        } else {
-            found
-        }
+        return DataSourceContainer(dataSource(configuration), configuration)
+    }
+
+    fun container(configuration: ServerConfiguration, database: String): DataSourceContainer {
+        return DataSourceContainer(
+                proxyDataSourceProvider.proxyDataSource(
+                        configuration.serverType,
+                        dataSource(configuration),
+                        database
+                ),
+                configuration,
+                database
+        )
     }
 
     fun clear(configuration: ServerConfiguration) {
         if (configuration.id != null) {
             val configurationId = configurationId(configuration)
             cache.remove(configurationId)
-            containerCache.remove(configurationId)
         }
     }
 

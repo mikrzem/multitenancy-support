@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="pl.net.gwynder.multitenency.support.script.execution.controllers.ScriptSummaryController"
+      styleClass="padded">
+    <TreeView fx:id="selectedDatabases"
+              VBox.vgrow="ALWAYS"
+              maxHeight="1000000"
+              showRoot="false"/>
+    <Button fx:id="editSelection">
+        Edit database selection
+    </Button>
+    <fx:include source="query_parsed.fxml" VBox.vgrow="ALWAYS"/>
+    <Button fx:id="editQuery">
+        Edit query
+    </Button>
+    <GridPane vgap="5" hgap="5">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="30"/>
+            <ColumnConstraints percentWidth="70"/>
+        </columnConstraints>
+        <Label GridPane.columnIndex="0"
+               GridPane.rowIndex="0">
+            On error
+        </Label>
+        <ComboBox GridPane.columnIndex="1"
+                  GridPane.rowIndex="0"
+                  fx:id="errorBehavior"/>
+        <Label GridPane.columnIndex="0"
+               GridPane.rowIndex="0">
+            Transaction
+        </Label>
+        <ComboBox GridPane.columnIndex="1"
+                  GridPane.rowIndex="0"
+                  fx:id="transactionBehavior"/>
+    </GridPane>
+    <Button fx:id="executeQuery">
+        <graphic>
+            <FontIcon iconLiteral="fa-play"/>
+        </graphic>
+        Execute query
+    </Button>
+</VBox>

@@ -3,6 +3,8 @@ package pl.net.gwynder.multitenency.support.stage.main
 import javafx.event.EventHandler
 import javafx.fxml.FXML
 import javafx.scene.Parent
+import javafx.scene.control.Button
+import javafx.scene.control.Menu
 import javafx.scene.control.MenuItem
 import javafx.scene.layout.Priority
 import javafx.scene.layout.VBox
@@ -32,7 +34,7 @@ class MainController(
         private val configurationContainer: ServerConfigurationEditContainer
 ) : BaseController(), MainNavigation {
 
-    private val navigationStack: Deque<Parent> = ArrayDeque()
+    private val navigationStack: Deque<() -> Parent> = ArrayDeque()
 
     @FXML
     var viewAllConfigurations: MenuItem? = null
@@ -54,42 +56,40 @@ class MainController(
         showAllConfigurations()
     }
 
-    private fun show(component: Parent) {
-        navigationStack.push(component)
+    private fun show(componentFactory: () -> Parent) {
+        navigationStack.push(componentFactory)
+        val component = componentFactory()
         VBox.setVgrow(component, Priority.ALWAYS)
-        contentContainer?.children?.clear()
-        contentContainer?.children?.add(
-                component
-        )
+        contentContainer?.children?.setAll(component)
     }
 
     override fun showAllConfigurations() {
-        show(fxml.component(configurationList))
+        show { fxml.component(configurationList) }
     }
 
     override fun showNewConfiguration() {
         configurationContainer.createNew()
-        show(fxml.component(configurationEdit))
+        show { fxml.component(configurationEdit) }
     }
 
     override fun showEditConfiguration(configuration: ServerConfiguration) {
         configurationContainer.current = configuration
-        show(fxml.component(configurationEdit))
+        show { fxml.component(configurationEdit) }
     }
 
     override fun showGroupEditTree(configuration: ServerConfiguration) {
         configurationContainer.current = configuration
-        show(fxml.component(groupTreeEdit))
+        show { fxml.component(groupTreeEdit) }
     }
 
     override fun showGroupEdit(configuration: ServerConfiguration, group: ServerConfigurationGroup) {
         configurationContainer.current = configuration
         configurationContainer.currentGroup = group
-        show(fxml.component(groupEdit))
+        show { fxml.component(groupEdit) }
     }
 
     override fun showScriptExecution() {
-        show(fxml.component(mainScriptExecution))
+        show { fxml.component(mainScriptExecution) }
     }
 
     override fun goBack() {
